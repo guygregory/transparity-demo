@@ -16,14 +16,16 @@ on:
 
 jobs:
   build_and_deploy_job:
+    # Run on push to main, and on PR open/update (but not when PR is closed)
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
-    environment: ${{ github.event_name == 'pull_request' && format('swa-preview-pr-{0}', github.event.pull_request.number) || 'swa-ci' }}
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: true
           lfs: false
+
       - name: Build And Deploy
         id: swa
         uses: Azure/static-web-apps-deploy@v1
@@ -61,16 +63,19 @@ jobs:
             });
 
   preview_after_agent:
+    # Only run when the "Copilot coding agent" workflow_run completes successfully
+    # and that workflow was triggered by a pull_request
     if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request'
     runs-on: ubuntu-latest
     name: Deploy Preview After Agent
-    environment: ${{ format('swa-preview-pr-{0}', github.event.workflow_run.pull_requests[0].number || github.event.workflow_run.head_branch) }}
+
     steps:
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
           submodules: true
           lfs: false
+
       - name: Build And Deploy Preview
         id: swa_preview
         uses: Azure/static-web-apps-deploy@v1
@@ -105,5 +110,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: pr.number,
-              body: `Preview environment deployed: ${previewUrl}`
+              body: `Preview environment deployed after agent: ${previewUrl}`
             });

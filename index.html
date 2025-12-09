@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catch the Snowflake</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__text">
+      <p class="eyebrow">Holiday Mini-Game</p>
+      <h1>Catch the Snowflake</h1>
+      <p class="lede">Glide a mitten across the snow and collect the falling flakes before they melt.</p>
+      <div class="buttons">
+        <button id="start-btn" class="btn primary" aria-label="Start game">Start</button>
+        <button id="reset-btn" class="btn ghost" aria-label="Restart game">Restart</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="playfield" aria-label="Game area">
+      <canvas id="game" width="800" height="500" role="img" aria-label="Snowflakes falling onto a mitten"></canvas>
+      <div id="announcement" class="announcement" aria-live="polite"></div>
+    </section>
+
+    <aside class="panel" aria-label="Score and instructions">
+      <div class="card">
+        <h2>Scoreboard</h2>
+        <dl class="stat-grid">
+          <div>
+            <dt>Score</dt>
+            <dd id="score">0</dd>
+          </div>
+          <div>
+            <dt>Misses</dt>
+            <dd id="misses">0 / 5</dd>
+          </div>
+          <div>
+            <dt>Time</dt>
+            <dd id="timer">60s</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="card">
+        <h2>How to play</h2>
+        <ul class="instructions">
+          <li>Use mouse/touch to move the mitten.</li>
+          <li>Or use keyboard arrows / A-D.</li>
+          <li>Catch snowflakes; avoid letting 5 fall.</li>
+          <li>Collect as many as you can in 60s.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Accessibility</h2>
+        <p>Keyboard friendly, no rapid flashing. Score updates are announced for screen readers.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <p>Built for a cozy holiday moment. Runs entirely in your browser.</p>
+  </footer>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

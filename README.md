@@ -52,7 +52,7 @@ This project uses a minimal, modern web stack with no frameworks or build tools 
 │   └── style.css          # Complete styling and responsive design
 ├── .github/
 │   └── workflows/
-│       └── azure-static-web-apps-*.yml  # GitHub Actions workflow
+│       └── azure-static-web-apps-victorious-river-069020b10.yml  # GitHub Actions workflow
 ├── AGENTS.md              # AI agent collaboration guidelines
 └── LICENSE                # MIT License
 ```
@@ -119,7 +119,7 @@ This project is configured for automatic deployment to [Azure Static Web Apps](h
 
 ### Automatic Deployment
 
-The repository includes a pre-configured GitHub Actions workflow (`.github/workflows/azure-static-web-apps-*.yml`) that automatically:
+The repository includes a pre-configured GitHub Actions workflow (`.github/workflows/azure-static-web-apps-victorious-river-069020b10.yml`) that automatically:
 
 - **Builds and deploys** on every push to the `main` branch
 - **Creates preview environments** for pull requests
@@ -267,16 +267,6 @@ This repository includes special instructions for AI coding agents in `AGENTS.md
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-```
-MIT License
-
-Copyright (c) 2025 Guy Gregory
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction...
-```
 
 ## 🙏 Acknowledgments
 

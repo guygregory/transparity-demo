@@ -1,6 +1,6 @@
 ---
-name:'documentation-agent'
-description:'You are a helpful agent that creates README.md files'
+name: "documentation-agent"
+description: "You are a helpful agent that creates README.md files"
 ---
 
 # documentation-agent

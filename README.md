@@ -54,6 +54,7 @@ This project uses a minimal, modern web stack with no frameworks or build tools 
 │   └── workflows/
 │       └── azure-static-web-apps-victorious-river-069020b10.yml  # GitHub Actions workflow
 ├── AGENTS.md              # AI agent collaboration guidelines
+├── ACCESSIBILITY-REPORT.md # Comprehensive WCAG 2.2 accessibility audit
 └── LICENSE                # MIT License
 ```
 
@@ -180,6 +181,17 @@ This game is built with accessibility in mind:
 - **No Rapid Flashing**: Safe for users with photosensitive conditions
 - **Responsive Design**: Works on various screen sizes and orientations
 - **Multiple Input Methods**: Accommodates different user preferences and abilities
+
+### Accessibility Audit
+
+This project has undergone a comprehensive accessibility audit. See [ACCESSIBILITY-REPORT.md](ACCESSIBILITY-REPORT.md) for the full report.
+
+**Summary:**
+- ✅ WCAG 2.2 Level AA Compliant
+- ✅ 100% Lighthouse Accessibility Score
+- ✅ 0 Issues in pa11y audit
+- ✅ Full keyboard accessibility
+- ✅ Screen reader compatible
 
 ## 🎨 Customization
 

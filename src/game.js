@@ -157,8 +157,8 @@ export class Game {
     const el = document.createElement('div');
     el.className = 'flake';
     el.style.setProperty('--size', `${flake.size}px`);
-    el.style.setProperty('--x', `${flake.x}px`);
-    el.style.setProperty('--y', `${flake.y}px`);
+    const left = flake.x - flake.size / 2;
+    el.style.transform = `translate(${left}px, ${flake.y}px)`;
     this.area.appendChild(el);
     flake.el = el;
     this.snowflakes.push(flake);

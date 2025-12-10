@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catch the Snowflake - a cozy Christmas mini-game built with HTML, CSS, and JavaScript">
+  <title>Catch the Snowflake</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__text">
+      <p class="eyebrow">Holiday mini-game</p>
+      <h1>Catch the Snowflake</h1>
+      <p class="lede">Slide your mittens, scoop the falling flakes, and keep the cheer meter full.</p>
+      <div class="hero__actions">
+        <button id="start-btn" class="btn btn-primary" type="button">Start the snowfall</button>
+        <button id="reset-btn" class="btn" type="button" aria-label="Reset score and lives">Reset</button>
+      </div>
+    </div>
+    <div class="hero__stats" aria-live="polite">
+      <div class="stat">
+        <span class="stat__label">Score</span>
+        <span id="score" class="stat__value">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat__label">Best</span>
+        <span id="best" class="stat__value">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat__label">Lives</span>
+        <span id="lives" class="stat__value" aria-label="Lives remaining">3</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="game-shell">
+      <div id="game-area" role="application" aria-label="Catch the Snowflake game area">
+        <div id="snow-layer" aria-hidden="true"></div>
+        <div id="player" aria-label="Player mittens" tabindex="0"></div>
+        <div id="message" role="status" aria-live="polite"></div>
+      </div>
+      <aside class="panel">
+        <h2>How to play</h2>
+        <ul>
+          <li>Move with arrow keys, A/D, or drag/tap inside the snow globe.</li>
+          <li>Catch flakes to earn points. Missing flakes costs a life.</li>
+          <li>Speed ramps up over time. Stay calm and cozy.</li>
+        </ul>
+        <p class="hint">Tip: keep your mittens near the center to react faster.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Built with vanilla HTML, CSS, and JavaScript. Ready for Azure Static Web Apps.</p>
+  </footer>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

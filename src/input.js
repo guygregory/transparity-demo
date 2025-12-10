@@ -18,9 +18,6 @@ export class Input {
 
     add(this.area, 'pointerdown', (e) => {
       this.pointerActive = true;
-      if (this.onStart) {
-        this.onStart();
-      }
       this.handlePointer(e);
     });
 

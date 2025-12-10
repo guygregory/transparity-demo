@@ -108,7 +108,8 @@ export class Game {
       flake.x += Math.sin(timeSeconds * flake.wobbleSpeed + flake.phase) * flake.drift * dt;
       flake.x = clamp(flake.x, flake.size / 2, this.width - flake.size / 2);
       const left = flake.x - flake.size / 2;
-      flake.el.style.transform = `translate(${left}px, ${flake.y}px)`;
+      flake.el.style.setProperty('--tx', `${left}px`);
+      flake.el.style.setProperty('--ty', `${flake.y}px`);
 
       if (this.checkCatch(flake)) {
         this.removeFlakeAt(i);
@@ -157,8 +158,8 @@ export class Game {
     const el = document.createElement('div');
     el.className = 'flake';
     el.style.setProperty('--size', `${flake.size}px`);
-    el.style.setProperty('--x', `${flake.x}px`);
-    el.style.setProperty('--y', `${flake.y}px`);
+    el.style.setProperty('--tx', `${flake.x - flake.size / 2}px`);
+    el.style.setProperty('--ty', `${flake.y}px`);
     this.area.appendChild(el);
     flake.el = el;
     this.snowflakes.push(flake);

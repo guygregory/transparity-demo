@@ -202,11 +202,14 @@ main {
   position: absolute;
   width: var(--size, 18px);
   height: var(--size, 18px);
-  left: var(--x, 0);
-  top: var(--y, 0);
+  left: 0;
+  top: 0;
+  --tx: 0px;
+  --ty: 0px;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #fff, rgba(255, 255, 255, 0.4));
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  transform: translate(var(--tx), var(--ty));
   animation: spin 6s linear infinite;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
 }
@@ -229,8 +232,8 @@ main {
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from { transform: translate(var(--tx), var(--ty)) rotate(0deg); }
+  to { transform: translate(var(--tx), var(--ty)) rotate(360deg); }
 }
 
 #message {

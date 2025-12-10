@@ -147,6 +147,9 @@ export class HighScores {
       }
     }
     
+    // Persist the initialized scores to localStorage
+    this.saveToLocalStorage();
+    
     return this.scores;
   }
 }

@@ -1,6 +1,6 @@
-# AGENTS.md – Christmas Game (HTML + CSS + JavaScript)
+# AGENTS.md – Browser Game (HTML + CSS + JavaScript)
 
-This repository contains a **simple, fully client-side Christmas game** built with vanilla HTML, CSS, and JavaScript, designed to be hosted on **Azure Static Web Apps**.
+This repository contains a **simple, fully client-side game** built with vanilla HTML, CSS, and JavaScript, designed to be hosted on **Azure Static Web Apps**.
 
 This file defines how AI/code agents should work with the project: goals, constraints, responsibilities, and collaboration patterns.
 

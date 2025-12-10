@@ -1,9 +1,10 @@
 import { clamp, randomRange } from './utils.js';
 
 export class Game {
-  constructor({ area, ui }) {
+  constructor({ area, ui, highScores }) {
     this.area = area;
     this.ui = ui;
+    this.highScores = highScores;
     this.snowflakes = [];
     this.running = false;
     this.best = this.loadBest();
@@ -210,8 +211,29 @@ export class Game {
   gameOver() {
     this.stop();
     this.persistBest();
-    const message = `Out of lives! Final score: ${this.score}`;
-    this.ui.showMessage(message);
+    
+    // Check if this is a high score
+    if (this.highScores && this.highScores.isHighScore(this.score)) {
+      // Show high score modal and let player enter name
+      this.ui.showHighScoreModal(
+        this.score,
+        (name) => {
+          // Add score with name
+          this.highScores.addScore(name, this.score);
+          this.highScores.saveToLocalStorage();
+          // Display updated scores
+          this.ui.displayHighScores(this.highScores.getScores(), this.score);
+        },
+        () => {
+          // Skip was clicked - just display current scores
+          this.ui.displayHighScores(this.highScores.getScores());
+        }
+      );
+    } else {
+      // Not a high score, just show game over message
+      const message = `Out of lives! Final score: ${this.score}`;
+      this.ui.showMessage(message);
+    }
   }
 
   loadBest() {

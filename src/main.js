@@ -1,8 +1,9 @@
 import { Game } from './game.js';
 import { UI } from './ui.js';
 import { Input } from './input.js';
+import { HighScores } from './highscores.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const scoreEl = document.getElementById('score');
   const bestEl = document.getElementById('best');
   const livesEl = document.getElementById('lives');
@@ -12,7 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const resetBtn = document.getElementById('reset-btn');
 
   const ui = new UI({ scoreEl, bestEl, livesEl, messageEl, startBtn, gameArea });
-  const game = new Game({ area: gameArea, ui });
+  
+  // Initialize high scores
+  const highScores = new HighScores();
+  await highScores.initialize();
+  
+  const game = new Game({ area: gameArea, ui, highScores });
 
   const input = new Input({
     area: gameArea,
@@ -34,5 +40,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Expose for debugging in console if needed
-  window.catchSnowflake = { game, ui, input };
+  window.catchSnowflake = { game, ui, input, highScores };
 });

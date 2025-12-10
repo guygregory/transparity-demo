@@ -5,6 +5,7 @@
 
 const HIGHSCORES_FILE = '/highscores.json';
 const MAX_SCORES = 10;
+const DEFAULT_PLAYER_NAME = 'Anonymous';
 
 export class HighScores {
   constructor() {
@@ -55,7 +56,7 @@ export class HighScores {
    */
   addScore(name, score) {
     const entry = {
-      name: name.trim() || 'Anonymous',
+      name: name.trim() || DEFAULT_PLAYER_NAME,
       score: score,
       date: new Date().toISOString()
     };
@@ -128,21 +129,17 @@ export class HighScores {
     if (localData) {
       try {
         const localScores = JSON.parse(localData);
-        // Merge local scores with file scores
-        const allScores = [...this.scores, ...localScores];
-        // Remove duplicates and sort
-        const uniqueScores = allScores.reduce((acc, current) => {
-          const exists = acc.find(item => 
-            item.name === current.name && 
-            item.score === current.score &&
-            item.date === current.date
-          );
-          if (!exists) {
-            acc.push(current);
-          }
-          return acc;
-        }, []);
+        // Merge local scores with file scores using a Map for better performance
+        const scoreMap = new Map();
         
+        // Add all scores to the map using a unique key
+        [...this.scores, ...localScores].forEach(score => {
+          const key = `${score.name}-${score.score}-${score.date}`;
+          scoreMap.set(key, score);
+        });
+        
+        // Convert back to array, sort, and keep top 10
+        const uniqueScores = Array.from(scoreMap.values());
         uniqueScores.sort((a, b) => b.score - a.score);
         this.scores = uniqueScores.slice(0, MAX_SCORES);
       } catch (error) {
